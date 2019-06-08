@@ -1,0 +1,246 @@
+* {
+    /* font-family: 'Varela Round', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.all-round-corners {
+    border-radius: 15px;
+}
+
+aside {
+    background-color: #282E30;
+    width: 200px;
+    height: 100%;
+    color: #F6F7F8;
+    position: fixed;
+}
+
+.logo {
+    height: 100px;
+    margin-top: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 201.324 201.324' style='enable-background:new 0 0 201.324 201.324;' xml:space='preserve'%3E%3Ccircle xmlns='http://www.w3.org/2000/svg' fill='%23f1a309' cx='95.596' cy='10.083' r='10.083'/%3E%3Ccircle xmlns='http://www.w3.org/2000/svg' fill='%23f1a309' cx='149.018' cy='10.083' r='10.083'/%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='%23f1a309' d='M179.06,19.254c-5.123-8.873-14.298-14.17-24.544-14.17v10c6.631,0,12.568,3.428,15.884,9.17 c3.316,5.743,3.316,12.599,0.001,18.342l-32.122,55.636c-3.315,5.742-9.253,9.17-15.884,9.171c-6.631,0-12.569-3.428-15.885-9.171 L74.389,42.595c-3.315-5.742-3.315-12.599,0-18.341s9.254-9.171,15.885-9.171v-10c-10.246,0-19.422,5.297-24.545,14.171 s-5.123,19.468,0,28.341l32.121,55.636c4.272,7.399,11.366,12.299,19.545,13.727v26.832c0,26.211-15.473,47.535-34.492,47.535 c-19.019,0-34.491-21.324-34.491-47.535v-31.948C59.802,109.52,68.4,99.424,68.4,87.356c0-13.779-11.21-24.989-24.989-24.989 s-24.989,11.21-24.989,24.989c0,12.067,8.598,22.163,19.989,24.486v31.948c0,31.725,19.959,57.535,44.492,57.535 c24.532,0,44.491-25.81,44.491-57.535v-26.832c8.178-1.428,15.273-6.328,19.544-13.727l32.122-55.636 C184.184,38.722,184.184,28.127,179.06,19.254z'/%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+.side-bar {
+    margin-top: calc((100vh - 420px) / 2 - 140px);
+    display: flex;
+    flex-direction: column;
+}
+
+.side-btn {
+    display: flex;
+    margin: 15px 40px 15px 0;
+    border-radius: 0 10px 10px 0;
+    height: 110px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #f1a309;
+}
+
+.side-ico {
+    width: 30px;
+    height: 30px;
+    margin-left: 1.2em;
+}
+
+.side-title {
+    margin: .6em 0 0 1em;
+    font-size: 1.2em;
+}
+
+.content {
+    position: absolute;
+    margin-left: 200px;
+    height: 100%;
+    width: calc(100% - 200px);;
+    background-color: #F6F7F8;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+}
+
+form {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    padding-left: 80px;
+}
+
+input {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: 1.2em;
+    font-family:Arial, FontAwesome;
+}
+
+input:focus {
+    outline: none;
+    content: '';
+    border-bottom: 3px solid #f1a309;
+}
+
+input::placeholder {
+    color: #979DA4;
+}
+
+.profile-block {
+    display: inline-flex;
+    width: 20%;
+    height: 100%;
+    margin-left: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.doctors {
+    margin: 30px;
+    padding: 40px;
+    width: calc(100% - 60px);
+    height: calc(100% - 160px);
+}
+
+.doctors-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.doctors-title {
+    font-size: 1.45em;
+    font-weight: 600;
+}
+
+.doctors-subtitle{
+    margin-top: 7px;
+    color: #979DA4;
+}
+
+.doctors-sort {
+    display: flex;
+    align-items: stretch;
+    height: 60px;
+    flex-wrap: wrap;
+}
+
+.sort-by, .order-by {
+    display: flex;
+}
+
+.sort-by {
+    margin-right: 20px;
+}
+
+.filter-btn {
+    height: 100%;
+    width: 60px;
+    font-size: 1.2em;
+    line-height: 1.3;
+    border: 1px solid #d2d2d2a8;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    background-color: transparent;
+}
+
+.filter-btn:focus {
+    outline: none
+}
+
+.filter-btn:active:hover {
+    background-color: #F6F7F8;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+}
+
+.custom-select {
+    display: inline-block;
+    min-width: 150px;
+    font-size: .95em;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em 1.4em;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #d2d2d2a8;
+    border-radius: 0 5px 5px 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23F1A309' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z' style='&%2310; fill: %23F1A309;&%2310;'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+
+.custom-select:focus {
+    border-color: #979DA4;
+    color: #222; 
+    outline: none;
+}
+
+.custom-select:hover {
+    background-color: #F6F7F8;
+}
+
+.doctors-list {
+    overflow-y: auto;
+    margin-top: 50px;
+    max-height: calc(100% - 110px);
+    /* width: calc(100% + 16px);
+    padding-right: 10px; */
+}
+
+.doctors-list::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.doctors-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
+    border-radius: 10px;
+}
+
+.doctors-list::-webkit-scrollbar-thumb {
+    background-color: #f1a309;
+    border-radius: 10px;
+}
+
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-gap: 2rem;
+}
+
+.doctor-card {
+    /* background-color: red; */
+    min-height: 380px;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 1em;
+}
+
