@@ -198,6 +198,7 @@ input::placeholder {
 
 
 .custom-select:focus {
+    border-radius: 0 5px 0 0;
     border-color: #979DA4;
     color: #222; 
     outline: none;
