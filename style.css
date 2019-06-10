@@ -238,16 +238,16 @@ input::placeholder {
 
 .doctors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 2rem;
 }
 
 .doctor-card {
     /* background-color: red; */
-    min-height: 380px;
+    min-height: 300px;
     border: 1px solid #eaeaea;
     border-radius: 5px;
-    padding: 2.5em 1.9em;
+    padding: 1.5em 1.9em;
     display: flex;
     flex-direction: column;
 }
@@ -256,7 +256,8 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border-bottom: 1px solid #979da46b;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 5px;
 }
 
 .doc-pic {
@@ -273,6 +274,47 @@ input::placeholder {
     font-weight: 600;
 }
 
+.doc-raiting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+Pure CSS Star Rating Widget BY James Barnett
+https://codepen.io/jamesbarnett/pen/vlpkh 
+*/
+
+.rating {
+    border: none;
+    margin-right: 7px
+}
+  
+.rating > input { 
+    display: none;
+} 
+
+.rating > label:before { 
+    margin: 2px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before { 
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label { 
+    color: #ddd; 
+    float: right; 
+}
+
+.rating > input:checked ~ label,
+.rating > input:checked { color: #FFD700;  } 
+
 .doc-address {
     margin: 10px 0 20px 0;
     font-size: 0.85em;
@@ -286,14 +328,63 @@ input::placeholder {
 
 .doc-spec {
     width: calc(100% / 2);
-    margin-top: 15px;
-    font-size: .88em;
+    margin-top: 10px;
+    font-size: .8em;
     font-weight: 600;
+    border-right: 1px solid #eaeaea;
+
 }
 
 .doc-date-btn {
     width: calc(100% / 2);
 }
 
+.spec-title {
+    margin-top: 5px;
+    color: #979DA4;
+    font-size: 1.25em;
+    font-weight: 100;
+    word-break: break-all;
+}
 
+.doc-date-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
+.bell-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #cceff6; */
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    font-size: 1.4em;
+    color: #00b1d5;
+    /* Animation */
+    transition: background 0.4s;
+    background: #cceff6 radial-gradient(circle, transparent 1%, #cceff6 1%) center/13000%;
+}
+
+.text-btn {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: .95em;
+    text-align: left;
+}
+
+.doc-date-btn:focus {
+    outline: none;
+}
+
+.doc-date-btn:active .bell-btn {
+    background-size: 100%;
+    transition: background 0s;
+    background-color: #00b1d5;
+}
