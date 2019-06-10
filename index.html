@@ -281,7 +281,8 @@
 
 <script type="text/javascript" src="script.js"></script>
 <script>
-    targetElement.ontouchend = (e) => {
+    const body = document.querySelector('body');
+    body.ontouchend = (e) => {
         e.preventDefault();
     };
 </script>
