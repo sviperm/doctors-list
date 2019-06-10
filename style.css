@@ -21,7 +21,7 @@ body {
 
 aside {
     background-color: #282E30;
-    width: 200px;
+    width: 160px;
     height: 100%;
     color: #F6F7F8;
     position: fixed;
@@ -42,13 +42,11 @@ aside {
 }
 
 .side-btn {
-    display: flex;
-    margin: 15px 40px 15px 0;
+    margin: 15px 20px 15px 0;
     border-radius: 0 10px 10px 0;
     height: 110px;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
     cursor: pointer;
 }
 
@@ -56,22 +54,29 @@ aside {
     background-color: #f1a309;
 }
 
+.side-btn-content {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .side-ico {
     width: 30px;
     height: 30px;
-    margin-left: 1.2em;
 }
 
 .side-title {
-    margin: .6em 0 0 1em;
+    margin-top: .6em;
     font-size: 1.2em;
 }
 
 .content {
     position: absolute;
-    margin-left: 200px;
+    margin-left: 160px;
     height: 100%;
-    width: calc(100% - 200px);;
+    width: calc(100% - 160px);;
     background-color: #F6F7F8;
 }
 
@@ -242,6 +247,53 @@ input::placeholder {
     min-height: 380px;
     border: 1px solid #eaeaea;
     border-radius: 5px;
-    padding: 1em;
+    padding: 2.5em 1.9em;
+    display: flex;
+    flex-direction: column;
 }
+
+.doc-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid #979da46b;
+}
+
+.doc-pic {
+    margin: 10px auto;
+    background-color: #f1a309;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.doc-full-name {
+    margin: 10px;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.doc-address {
+    margin: 10px 0 20px 0;
+    font-size: 0.85em;
+    color: #101010d6;
+}
+
+.doc-sub-info {
+    display: flex;
+    align-items: stretch;
+}
+
+.doc-spec {
+    width: calc(100% / 2);
+    margin-top: 15px;
+    font-size: .88em;
+    font-weight: 600;
+}
+
+.doc-date-btn {
+    width: calc(100% / 2);
+}
+
+
 
