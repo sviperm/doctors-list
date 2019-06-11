@@ -545,8 +545,18 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 
 }
 
-/* Fav button by Robeen
+/* Fav button animation by Robeen
 https://codepen.io/robeen/pen/PbvJjy?editors=1100 */
+
+.fav-btn-load {
+    display: none;
+}
+
+.fav-btn-load:checked + label svg #heart {
+    fill: #e2264d;
+    transform: scale(1.2);
+    animation: animateHeartOnLoad 0.3s linear forwards;
+}
 
 .fav-doc-btn svg {
     cursor: pointer;
@@ -568,8 +578,8 @@ https://codepen.io/robeen/pen/PbvJjy?editors=1100 */
 }
 
 .fav-btn:checked + label svg #heart {
-    transform: scale(0.2);
     fill: #e2264d;
+    transform: scale(0.2);
     animation: animateHeart 0.3s linear forwards 0.25s;
 }
 .fav-btn:checked + label svg #main-circ {
@@ -771,6 +781,7 @@ https://codepen.io/robeen/pen/PbvJjy?editors=1100 */
         stroke-width: 0;
     }
 }
+
 @keyframes animateHeart {
     0% {
         transform: scale(0.2);
@@ -782,7 +793,17 @@ https://codepen.io/robeen/pen/PbvJjy?editors=1100 */
         transform: scale(1);
     }
 }
+
 @keyframes animateHeartOut {
+    0% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes animateHeartOnLoad {
     0% {
         transform: scale(1.4);
     }
