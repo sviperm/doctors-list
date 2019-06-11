@@ -16,6 +16,11 @@ a {
 body {
     height: 100vh;
     width: 100vw;
+    background-color: #F6F7F8;
+}
+
+html, body {
+    overflow: hidden;
 }
 
 .bg-white {
@@ -83,8 +88,7 @@ aside {
     position: absolute;
     margin-left: 160px;
     height: 100%;
-    width: calc(100% - 160px);;
-    background-color: #F6F7F8;
+    width: calc(100% - 160px);
 }
 
 header {
@@ -120,12 +124,14 @@ input::placeholder {
 }
 
 .profile-area {
-    display: inline-flex;
+    display: flex;
     width: 20%;
     height: 100%;
     margin-left: 1px;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 0 25px;
 }
 
 .doctors {
@@ -163,7 +169,7 @@ input::placeholder {
 }
 
 .sort-by {
-    margin-right: 20px;
+    margin-right: 2rem;
 }
 
 .filter-btn {
@@ -191,7 +197,7 @@ input::placeholder {
 
 .custom-select {
     display: inline-block;
-    min-width: 150px;
+    width: 150px;
     font-size: .95em;
     line-height: 1.3;
     padding: .6em 1.4em .5em 1.4em;
@@ -206,6 +212,7 @@ input::placeholder {
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
+    background-color: #fff;
 }
 
 
@@ -222,8 +229,8 @@ input::placeholder {
 
 .doctors-list {
     overflow-y: auto;
-    margin-top: 50px;
-    max-height: calc(100% - 110px);
+    margin-top: 25px;
+    max-height: calc(100% - 85px);
 }
 
 .doctors-list::-webkit-scrollbar {
@@ -254,14 +261,14 @@ input::placeholder {
     padding: 1.5em 1.9em;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
 
 .doc-info {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border-bottom: 1px solid #eaeaea;
-    margin-bottom: 5px;
 }
 
 .doc-pic {
@@ -282,6 +289,7 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* 
@@ -319,6 +327,8 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 .rating > input:checked ~ label,
 .rating > input:checked { color: #FFD700;  } 
 
+/* End widget */
+
 .doc-address {
     margin: 10px 0 20px 0;
     font-size: 0.85em;
@@ -328,6 +338,8 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 .doc-sub-info {
     display: flex;
     align-items: stretch;
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
 }
 
 .doc-spec {
@@ -390,4 +402,138 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 
 .doc-date-btn:focus {
     outline: none;
+}
+
+@media screen and (max-width: 1160px) {
+
+    header {
+        height: 70px;
+    }
+    
+    header > form {
+        padding-left: 30px;
+    }
+
+    .doctors {
+        height: calc(100% - 70px - 60px);
+    }
+
+    .doctors-list {
+        max-height: calc(100% - 104px - 10px);
+        margin-top: 10px;
+    }
+
+    .doctors-header {
+        flex-direction: column;
+    }
+    
+    .doctors-title-cont {
+        text-align: center;
+    }
+    
+    .doctors-sort {
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: nowrap;
+        height: 40px;
+    }
+
+    .doctors-sort > div {
+        width: calc((100% - 20px) / 2);
+    }
+
+    .custom-select {
+        width: calc(100% - 60px);
+    }
+    
+}
+
+@media screen and (max-width: 1032px) {
+    
+    aside {
+        height: 60px;
+        width: 100vw;
+        bottom: 0;
+    }
+
+    .logo {
+        display: none;
+
+    }
+
+    .side-ico {
+        width: 20px;
+        height: 20px;
+    }
+
+    .side-title {
+        font-size: .8rem;
+    }
+
+    .side-bar {
+        margin: 8px 0 0 0;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .side-btn {
+        margin: 0;
+        padding-bottom: 5px;
+        height: 100%;
+        width: 110px;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .side-btn .side-btn-content {
+        margin: -5px 0 0 0;
+    }
+
+    .content {
+        margin: 0;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+    }
+
+    .doctors {
+        height: calc(100% - 70px - 60px);
+    }
+}
+
+@media screen and (max-width: 877px) {
+
+    .doctors {
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        height: calc(100% - 70px - 20px);
+        width: 100%;
+        border-radius: 0 !important;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    .profile-area {
+        width: 100%;
+        order: 1;
+        padding: 5px 0 0 0;
+    }
+
+    .profile-area::before {
+        content: 'Пользователь:';
+        margin: 5px;
+    }
+
+    header > form {
+        width: 100%;
+        order: 2;
+        height: calc(70px - 24px);
+        padding-right: 30px;
+    }
+
 }
