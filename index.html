@@ -17,6 +17,7 @@
 
 
 <body>
+    <!-- Menu Bar -->
     <aside>
         <div class="logo"></div>
         <div class="side-bar">
@@ -37,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="side-btn">
+            <div id="upload_doctors" class="side-btn">
                 <div class="side-btn-content">
                     <div class="side-ico">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -75,7 +76,9 @@
             </div>
         </div>
     </aside>
+    <!-- Content -->
     <div class="content">
+        <!-- Search -->
         <header>
             <form class="bg-white">
                 <input type="text" placeholder="&#xf002;   Поиск ...">
@@ -91,6 +94,7 @@
                         <div class="doctors-title">Найди Своего Доктора</div>
                         <div class="doctors-subtitle">У нас много докторов, которые могут Вам помочь</div>
                     </div>
+                    <!-- Filter doctors -->
                     <div class="doctors-sort">
                         <div class="sort-by">
                             <button class="filter-btn" name="toogle-sort"><i
@@ -111,6 +115,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Doctors container -->
                 <div class="doctors-list">
                     <div class="doctors-grid">
                         <div class="doctor-card">
@@ -439,6 +444,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- Modal Window -->
+    <div class="modal">
+        <div class="modal-message all-round-corners">
+            <button id="upload_sample" class="upload-btn all-round-corners">Загрузить <kbd>sample.json</kbd></button>
+            <button id="upload_from_pc" class="upload-btn all-round-corners">Загрузить с компьютера
+                <input type="file" id="file_input" style="display: none" accept=".json">
+            </button>
+            <div class="close-modal"></div>
         </div>
     </div>
 </body>
