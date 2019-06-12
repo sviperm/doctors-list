@@ -14,7 +14,8 @@ let isModalClosed = true;
 // Functions
 function showModal() {
     modalWindow.classList.add('show');
-    modalWindow.classList.add('fade');
+    // Super important, we need to delay to add 'fade' class
+    setTimeout(() => { modalWindow.classList.add('fade') }, (10));
 };
 
 function closeModal() {
