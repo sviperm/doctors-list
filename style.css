@@ -1,3 +1,17 @@
+:root {
+    --header-height: 100px;
+    --header-mobile-height: 70px;
+    --aside-width: 160px;
+    --aside-btns-height: 420px;
+    --aside-logo-height: 140px; /* with margin-top */
+    --aside-height: 60px;
+    --doctors-margin: 30px;
+    --doctors-padding: 30px;
+    --space-betwwen-sort-n-order: 2rem;
+    --filter-btn-width: 60px;
+    --profile-n-search-height: 35px;
+}
+
 * {
     /* font-family: 'Varela Round', sans-serif; */
     font-family: 'Roboto', sans-serif;
@@ -6,21 +20,38 @@
     margin: 0;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 input,
 textarea,
 button,
 select,
-a {
-  -webkit-tap-highlight-color: transparent;
+a,
+svg {
+  -webkit-tap-highlight-color: transparent !important;
 }
+
 body {
     height: 100vh;
     width: 100vw;
     background-color: #F6F7F8;
 }
 
-html, body {
-    overflow: hidden;
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #f1a309;
+    border-radius: 10px;
 }
 
 .bg-white {
@@ -37,6 +68,7 @@ aside {
     height: 100vh;
     color: #F6F7F8;
     position: fixed;
+    z-index: 10;
 }
 
 .logo {
@@ -48,7 +80,7 @@ aside {
 }
 
 .side-bar {
-    margin-top: calc((100vh - 420px) / 2 - 140px);
+    margin-top: calc((100vh - var(--aside-btns-height)) / 2 - var(--aside-logo-height));
     display: flex;
     flex-direction: column;
 }
@@ -89,12 +121,16 @@ aside {
     margin-left: 160px;
     height: 100%;
     width: calc(100% - 160px);
+    overflow: hidden;
 }
 
 header {
-    height: 100px;
+    height: var(--header-height);
     width: 100%;
     display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #d2d2d2a8;
+    z-index: 10;
 }
 
 form {
@@ -134,11 +170,16 @@ input::placeholder {
     padding: 0 25px;
 }
 
+.container {
+    overflow-y: auto;
+    height: calc(100% - var(--header-height));
+}
+
 .doctors {
-    margin: 30px;
-    padding: 40px;
-    width: calc(100% - 60px);
-    height: calc(100% - 160px);
+    margin: var(--doctors-margin);
+    padding: var(--doctors-padding);
+    width: calc(100% - var(--doctors-margin) * 2);
+    min-height: calc(100% - var(--doctors-margin) * 2);
 }
 
 .doctors-header {
@@ -169,12 +210,12 @@ input::placeholder {
 }
 
 .sort-by {
-    margin-right: 2rem;
+    margin-right: var(--space-betwwen-sort-n-order);
 }
 
 .filter-btn {
     height: 100%;
-    width: 60px;
+    width: var(--filter-btn-width);
     font-size: 1.2em;
     line-height: 1.3;
     border: 1px solid #d2d2d2a8;
@@ -228,24 +269,7 @@ input::placeholder {
 }
 
 .doctors-list {
-    overflow-y: auto;
     margin-top: 25px;
-    max-height: calc(100% - 85px);
-}
-
-.doctors-list::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-.doctors-list::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
-    border-radius: 10px;
-}
-
-.doctors-list::-webkit-scrollbar-thumb {
-    background-color: #f1a309;
-    border-radius: 10px;
 }
 
 .doctors-grid {
@@ -421,12 +445,11 @@ https://codepen.io/jamesbarnett/pen/vlpkh
         padding-left: 30px;
     }
 
-    .doctors {
-        height: calc(100% - 70px - 60px);
+    .container {
+        height: calc(100% - var(--header-mobile-height));
     }
 
     .doctors-list {
-        max-height: calc(100% - 104px - 10px);
         margin-top: 10px;
     }
 
@@ -446,11 +469,11 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     }
 
     .doctors-sort > div {
-        width: calc((100% - 20px) / 2);
+        width: calc((100% - var(--space-betwwen-sort-n-order)) / 2);
     }
 
     .custom-select {
-        width: calc(100% - 60px);
+        width: calc(100% - var(--filter-btn-width));
     }
     
 }
@@ -458,7 +481,7 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 @media screen and (max-width: 1032px) {
     
     aside {
-        height: 60px;
+        height: var(--aside-height);
         width: 100vw;
         bottom: 0;
     }
@@ -495,15 +518,11 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     .side-btn .side-btn-content {
         margin: -5px 0 0 0;
     }
-
+    
     .content {
         margin: 0;
         width: 100%;
-        max-height: calc(100vh - 80px);
-    }
-
-    .doctors {
-        height: calc(100% - 70px - 60px);
+        height: calc(100% - var(--aside-height));
     }
 }
 
@@ -512,7 +531,6 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     .doctors {
         margin: 10px 0 10px 0;
         padding: 10px;
-        height: calc(100% - 70px - 20px);
         width: 100%;
         border-radius: 0 !important;
     }
@@ -529,6 +547,7 @@ https://codepen.io/jamesbarnett/pen/vlpkh
         width: 100%;
         order: 1;
         padding: 5px 0 0 0;
+        height: var(--profile-n-search-height);
     }
 
     .profile-area::before {
@@ -539,8 +558,9 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     header > form {
         width: 100%;
         order: 2;
-        height: calc(70px - 24px);
+        height: var(--profile-n-search-height);
         padding-right: 30px;
+        font-size: .8em;
     }
 
 }

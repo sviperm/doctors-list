@@ -84,337 +84,357 @@
                 Сафоничев Владислав
             </div>
         </header>
-        <div class="doctors bg-white all-round-corners">
-            <div class="doctors-header">
-                <div class="doctors-title-cont">
-                    <div class="doctors-title">Найди Своего Доктора</div>
-                    <div class="doctors-subtitle">У нас много докторов, которые могут Вам помочь</div>
+        <div class="container">
+            <div class="doctors bg-white all-round-corners">
+                <div class="doctors-header">
+                    <div class="doctors-title-cont">
+                        <div class="doctors-title">Найди Своего Доктора</div>
+                        <div class="doctors-subtitle">У нас много докторов, которые могут Вам помочь</div>
+                    </div>
+                    <div class="doctors-sort">
+                        <div class="sort-by">
+                            <button class="filter-btn" name="toogle-sort"><i
+                                    class="fas fa-sort-amount-down"></i></button>
+                            <select class="custom-select" name="sort" id="sort_by">
+                                <option value="1">А - Я</option>
+                                <option value="2">Рейтинг</option>
+                                <option value="3">Расстояние</option>
+                            </select>
+                        </div>
+                        <div class="order-by">
+                            <button class="filter-btn" name="toogle-fav"><i class="far fa-star"></i></button>
+                            <select class="custom-select" name="order" id="order_by">
+                                <option value="1">Все</option>
+                                <option value="2">Мужчины</option>
+                                <option value="3">Женщины</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="doctors-sort">
-                    <div class="sort-by">
-                        <button class="filter-btn" name="toogle-sort"><i class="fas fa-sort-amount-down"></i></button>
-                        <select class="custom-select" name="sort" id="sort_by">
-                            <option value="1">А - Я</option>
-                            <option value="2">Рейтинг</option>
-                            <option value="3">Расстояние</option>
-                        </select>
-                    </div>
-                    <div class="order-by">
-                        <button class="filter-btn" name="toogle-fav"><i class="far fa-star"></i></button>
-                        <select class="custom-select" name="order" id="order_by">
-                            <option value="1">Все</option>
-                            <option value="2">Мужчины</option>
-                            <option value="3">Женщины</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="doctors-list">
-                <div class="doctors-grid">
-                    <div class="doctor-card">
-                        <div class="doc-info">
-                            <div class="fav-doc-btn">
-                                <input class="fav-btn-load" type="checkbox" id="doc_id_1" checked />
-                                <label for="doc_id_1">
-                                    <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
-                                            <path
-                                                d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-                                                id="heart" fill="#AAB8C2" />
-                                            <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-                                                r="1.5" />
+                <div class="doctors-list">
+                    <div class="doctors-grid">
+                        <div class="doctor-card">
+                            <div class="doc-info">
+                                <div class="fav-doc-btn">
+                                    <input class="fav-btn-load" type="checkbox" id="doc_id_1" checked />
+                                    <label for="doc_id_1">
+                                        <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Group" fill="none" fill-rule="evenodd"
+                                                transform="translate(467 392)">
+                                                <path
+                                                    d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
+                                                    id="heart" fill="#AAB8C2" />
+                                                <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
+                                                    r="1.5" />
 
-                                            <g id="grp7" opacity="0" transform="translate(7 6)">
-                                                <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                                <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                    <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
+                                                    <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp6" opacity="0" transform="translate(0 28)">
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp3" opacity="0" transform="translate(52 28)">
-                                                <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                                <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                    <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
+                                                    <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp2" opacity="0" transform="translate(44 6)">
-                                                <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                    <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp5" opacity="0" transform="translate(14 50)">
-                                                <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                    <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp4" opacity="0" transform="translate(35 50)">
-                                                <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
-                                            </g>
+                                                <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                    <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
+                                                </g>
 
-                                            <g id="grp1" opacity="0" transform="translate(24)">
-                                                <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                                <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
+                                                <g id="grp1" opacity="0" transform="translate(24)">
+                                                    <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
+                                                    <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
+                                                </g>
                                             </g>
-                                        </g>
-                                    </svg>
-                                </label>
+                                        </svg>
+                                    </label>
+                                </div>
+                                <img class="doc-pic" src="img/doc-avatar-vlad.png" alt="">
+                                <div class="doc-full-name">Сафоничев Владислав Маркович</div>
+                                <div class="doc-raiting">
+                                    <fieldset class="rating">
+                                        <input type="checkbox" id="star5" name="rating" value="5" disabled /><label
+                                            class="full" for="star5" title="Awesome - 5 stars"></label>
+                                        <input checked type="checkbox" id="star4half" name="rating" value="4 and a half"
+                                            disabled /><label class="half" for="star4half"
+                                            title="Pretty good - 4.5 stars"></label>
+                                        <input type="checkbox" id="star4" name="rating" value="4" disabled /><label
+                                            class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                        <input type="checkbox" id="star3half" name="rating" value="3 and a half"
+                                            disabled /><label class="half" for="star3half"
+                                            title="Meh - 3.5 stars"></label>
+                                        <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
+                                            class="full" for="star3" title="Meh - 3 stars"></label>
+                                        <input type="checkbox" id="star2half" name="rating" value="2 and a half"
+                                            disabled /><label class="half" for="star2half"
+                                            title="Kinda bad - 2.5 stars"></label>
+                                        <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
+                                            class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                        <input type="checkbox" id="star1half" name="rating" value="1 and a half"
+                                            disabled /><label class="half" for="star1half"
+                                            title="Meh - 1.5 stars"></label>
+                                        <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
+                                            class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                        <input type="checkbox" id="starhalf" name="rating" value="half"
+                                            disabled /><label class="half" for="starhalf"
+                                            title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                    4.5
+                                </div>
+                                <div class="doc-address"><i class="fas fa-map-marker-alt"
+                                        style="margin-right: 7px"></i>ул.
+                                    Карла Маркса 74
+                                </div>
                             </div>
-                            <img class="doc-pic" src="img/doc-avatar-vlad.png" alt="">
-                            <div class="doc-full-name">Сафоничев Владислав Маркович</div>
-                            <div class="doc-raiting">
-                                <fieldset class="rating">
-                                    <input type="checkbox" id="star5" name="rating" value="5" disabled /><label
-                                        class="full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input checked type="checkbox" id="star4half" name="rating" value="4 and a half"
-                                        disabled /><label class="half" for="star4half"
-                                        title="Pretty good - 4.5 stars"></label>
-                                    <input type="checkbox" id="star4" name="rating" value="4" disabled /><label
-                                        class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="checkbox" id="star3half" name="rating" value="3 and a half"
-                                        disabled /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                    <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
-                                        class="full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="checkbox" id="star2half" name="rating" value="2 and a half"
-                                        disabled /><label class="half" for="star2half"
-                                        title="Kinda bad - 2.5 stars"></label>
-                                    <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
-                                        class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="checkbox" id="star1half" name="rating" value="1 and a half"
-                                        disabled /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                    <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
-                                        class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="checkbox" id="starhalf" name="rating" value="half" disabled /><label
-                                        class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                </fieldset>
-                                4.5
-                            </div>
-                            <div class="doc-address"><i class="fas fa-map-marker-alt" style="margin-right: 7px"></i>ул.
-                                Карла Маркса 74
+                            <div class="doc-sub-info">
+                                <div class="doc-spec">
+                                    Специальность
+                                    <div class="spec-title">
+                                        Гастроэнтеролог
+                                    </div>
+                                </div>
+                                <!-- Doc ID -->
+                                <button id="doc_id" class="doc-date-btn">
+                                    <div class="bell-btn">
+                                        <i id="bell" class="far fa-bell"></i>
+                                    </div>
+                                    <div class="text-btn">
+                                        Записаться<br>на прием
+                                    </div>
+                                </button>
                             </div>
                         </div>
-                        <div class="doc-sub-info">
-                            <div class="doc-spec">
-                                Специальность
-                                <div class="spec-title">
-                                    Гастроэнтеролог
+                        <div class="doctor-card">
+                            <div class="doc-info">
+                                <div class="fav-doc-btn">
+                                    <input class="fav-btn" type="checkbox" id="doc_id_2" />
+                                    <label for="doc_id_2">
+                                        <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Group" fill="none" fill-rule="evenodd"
+                                                transform="translate(467 392)">
+                                                <path
+                                                    d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
+                                                    id="heart" fill="#AAB8C2" />
+                                                <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
+                                                    r="1.5" />
+
+                                                <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                    <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
+                                                    <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                    <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
+                                                    <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                    <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                    <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                    <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp1" opacity="0" transform="translate(24)">
+                                                    <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
+                                                    <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </div>
+                                <img class="doc-pic" src="img/doc-avatar-artur.png" alt="">
+                                <div class="doc-full-name">Тутаров Артур Вячеславович</div>
+                                <div class="doc-raiting">
+                                    <fieldset class="rating">
+                                        <input type="checkbox" id="star5" name="rating" value="5" checked
+                                            disabled /><label class="full" for="star5"
+                                            title="Awesome - 5 stars"></label>
+                                        <input type="checkbox" id="star4half" name="rating" value="4 and a half"
+                                            disabled /><label class="half" for="star4half"
+                                            title="Pretty good - 4.5 stars"></label>
+                                        <input type="checkbox" id="star4" name="rating" value="4" disabled /><label
+                                            class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                        <input type="checkbox" id="star3half" name="rating" value="3 and a half"
+                                            disabled /><label class="half" for="star3half"
+                                            title="Meh - 3.5 stars"></label>
+                                        <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
+                                            class="full" for="star3" title="Meh - 3 stars"></label>
+                                        <input type="checkbox" id="star2half" name="rating" value="2 and a half"
+                                            disabled /><label class="half" for="star2half"
+                                            title="Kinda bad - 2.5 stars"></label>
+                                        <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
+                                            class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                        <input type="checkbox" id="star1half" name="rating" value="1 and a half"
+                                            disabled /><label class="half" for="star1half"
+                                            title="Meh - 1.5 stars"></label>
+                                        <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
+                                            class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                        <input type="checkbox" id="starhalf" name="rating" value="half"
+                                            disabled /><label class="half" for="starhalf"
+                                            title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                    5.0
+                                </div>
+                                <div class="doc-address"><i class="fas fa-map-marker-alt"
+                                        style="margin-right: 7px"></i>ул.
+                                    Карла Маркса 74
                                 </div>
                             </div>
-                            <!-- Doc ID -->
-                            <button id="doc_id" class="doc-date-btn">
-                                <div class="bell-btn">
-                                    <i id="bell" class="far fa-bell"></i>
+                            <div class="doc-sub-info">
+                                <div class="doc-spec">
+                                    Специальность
+                                    <div class="spec-title">
+                                        Гастроэнтеролог
+                                    </div>
                                 </div>
-                                <div class="text-btn">
-                                    Записаться<br>на прием
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="doctor-card">
-                        <div class="doc-info">
-                            <div class="fav-doc-btn">
-                                <input class="fav-btn" type="checkbox" id="doc_id_2" />
-                                <label for="doc_id_2">
-                                    <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
-                                            <path
-                                                d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-                                                id="heart" fill="#AAB8C2" />
-                                            <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-                                                r="1.5" />
-
-                                            <g id="grp7" opacity="0" transform="translate(7 6)">
-                                                <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                                <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp6" opacity="0" transform="translate(0 28)">
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp3" opacity="0" transform="translate(52 28)">
-                                                <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                                <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp2" opacity="0" transform="translate(44 6)">
-                                                <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp5" opacity="0" transform="translate(14 50)">
-                                                <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp4" opacity="0" transform="translate(35 50)">
-                                                <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp1" opacity="0" transform="translate(24)">
-                                                <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                                <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </label>
-                            </div>
-                            <img class="doc-pic" src="img/doc-avatar-artur.png" alt="">
-                            <div class="doc-full-name">Тутаров Артур Вячеславович</div>
-                            <div class="doc-raiting">
-                                <fieldset class="rating">
-                                    <input type="checkbox" id="star5" name="rating" value="5" checked disabled /><label
-                                        class="full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input type="checkbox" id="star4half" name="rating" value="4 and a half"
-                                        disabled /><label class="half" for="star4half"
-                                        title="Pretty good - 4.5 stars"></label>
-                                    <input type="checkbox" id="star4" name="rating" value="4" disabled /><label
-                                        class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="checkbox" id="star3half" name="rating" value="3 and a half"
-                                        disabled /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                    <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
-                                        class="full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="checkbox" id="star2half" name="rating" value="2 and a half"
-                                        disabled /><label class="half" for="star2half"
-                                        title="Kinda bad - 2.5 stars"></label>
-                                    <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
-                                        class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="checkbox" id="star1half" name="rating" value="1 and a half"
-                                        disabled /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                    <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
-                                        class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="checkbox" id="starhalf" name="rating" value="half" disabled /><label
-                                        class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                </fieldset>
-                                5.0
-                            </div>
-                            <div class="doc-address"><i class="fas fa-map-marker-alt" style="margin-right: 7px"></i>ул.
-                                Карла Маркса 74
-                            </div>
-                        </div>
-                        <div class="doc-sub-info">
-                            <div class="doc-spec">
-                                Специальность
-                                <div class="spec-title">
-                                    Гастроэнтеролог
-                                </div>
-                            </div>
-                            <!-- Doc ID -->
-                            <button id="doc_id" class="doc-date-btn">
-                                <div class="bell-btn">
-                                    <i id="bell" class="far fa-bell"></i>
-                                </div>
-                                <div class="text-btn">
-                                    Записаться<br>на прием
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="doctor-card">
-                        <div class="doc-info">
-                            <div class="fav-doc-btn">
-                                <input class="fav-btn" type="checkbox" id="doc_id_3" />
-                                <label for="doc_id_3">
-                                    <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
-                                            <path
-                                                d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-                                                id="heart" fill="#AAB8C2" />
-                                            <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-                                                r="1.5" />
-
-                                            <g id="grp7" opacity="0" transform="translate(7 6)">
-                                                <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                                <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp6" opacity="0" transform="translate(0 28)">
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp3" opacity="0" transform="translate(52 28)">
-                                                <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                                <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp2" opacity="0" transform="translate(44 6)">
-                                                <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                                <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp5" opacity="0" transform="translate(14 50)">
-                                                <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp4" opacity="0" transform="translate(35 50)">
-                                                <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
-                                                <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
-                                            </g>
-
-                                            <g id="grp1" opacity="0" transform="translate(24)">
-                                                <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                                <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </label>
-                            </div>
-                            <img class="doc-pic" src="img/doc-avatar-yana.png" alt="">
-                            <div class="doc-full-name">Шамсутдинова Яна Маратовна</div>
-                            <div class="doc-raiting">
-                                <fieldset class="rating">
-                                    <input type="checkbox" id="star5" name="rating" value="5" disabled /><label
-                                        class="full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input type="checkbox" id="star4half" name="rating" value="4 and a half"
-                                        disabled /><label class="half" for="star4half"
-                                        title="Pretty good - 4.5 stars"></label>
-                                    <input type="checkbox" id="star4" name="rating" value="4" checked disabled /><label
-                                        class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="checkbox" id="star3half" name="rating" value="3 and a half"
-                                        disabled /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                    <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
-                                        class="full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="checkbox" id="star2half" name="rating" value="2 and a half"
-                                        disabled /><label class="half" for="star2half"
-                                        title="Kinda bad - 2.5 stars"></label>
-                                    <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
-                                        class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="checkbox" id="star1half" name="rating" value="1 and a half"
-                                        disabled /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                    <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
-                                        class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="checkbox" id="starhalf" name="rating" value="half" disabled /><label
-                                        class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                </fieldset>
-                                4.0
-                            </div>
-                            <div class="doc-address"><i class="fas fa-map-marker-alt" style="margin-right: 7px"></i>ул.
-                                Карла Маркса 74
+                                <!-- Doc ID -->
+                                <button id="doc_id" class="doc-date-btn">
+                                    <div class="bell-btn">
+                                        <i id="bell" class="far fa-bell"></i>
+                                    </div>
+                                    <div class="text-btn">
+                                        Записаться<br>на прием
+                                    </div>
+                                </button>
                             </div>
                         </div>
-                        <div class="doc-sub-info">
-                            <div class="doc-spec">
-                                Специальность
-                                <div class="spec-title">
-                                    Гастроэнтеролог
+                        <div class="doctor-card">
+                            <div class="doc-info">
+                                <div class="fav-doc-btn">
+                                    <input class="fav-btn" type="checkbox" id="doc_id_3" />
+                                    <label for="doc_id_3">
+                                        <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Group" fill="none" fill-rule="evenodd"
+                                                transform="translate(467 392)">
+                                                <path
+                                                    d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
+                                                    id="heart" fill="#AAB8C2" />
+                                                <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
+                                                    r="1.5" />
+
+                                                <g id="grp7" opacity="0" transform="translate(7 6)">
+                                                    <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2" />
+                                                    <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp6" opacity="0" transform="translate(0 28)">
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp3" opacity="0" transform="translate(52 28)">
+                                                    <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2" />
+                                                    <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp2" opacity="0" transform="translate(44 6)">
+                                                    <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2" />
+                                                    <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp5" opacity="0" transform="translate(14 50)">
+                                                    <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp4" opacity="0" transform="translate(35 50)">
+                                                    <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2" />
+                                                    <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2" />
+                                                </g>
+
+                                                <g id="grp1" opacity="0" transform="translate(24)">
+                                                    <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
+                                                    <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </div>
+                                <img class="doc-pic" src="img/doc-avatar-yana.png" alt="">
+                                <div class="doc-full-name">Шамсутдинова Яна Маратовна</div>
+                                <div class="doc-raiting">
+                                    <fieldset class="rating">
+                                        <input type="checkbox" id="star5" name="rating" value="5" disabled /><label
+                                            class="full" for="star5" title="Awesome - 5 stars"></label>
+                                        <input type="checkbox" id="star4half" name="rating" value="4 and a half"
+                                            disabled /><label class="half" for="star4half"
+                                            title="Pretty good - 4.5 stars"></label>
+                                        <input type="checkbox" id="star4" name="rating" value="4" checked
+                                            disabled /><label class="full" for="star4"
+                                            title="Pretty good - 4 stars"></label>
+                                        <input type="checkbox" id="star3half" name="rating" value="3 and a half"
+                                            disabled /><label class="half" for="star3half"
+                                            title="Meh - 3.5 stars"></label>
+                                        <input type="checkbox" id="star3" name="rating" value="3" disabled /><label
+                                            class="full" for="star3" title="Meh - 3 stars"></label>
+                                        <input type="checkbox" id="star2half" name="rating" value="2 and a half"
+                                            disabled /><label class="half" for="star2half"
+                                            title="Kinda bad - 2.5 stars"></label>
+                                        <input type="checkbox" id="star2" name="rating" value="2" disabled /><label
+                                            class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                        <input type="checkbox" id="star1half" name="rating" value="1 and a half"
+                                            disabled /><label class="half" for="star1half"
+                                            title="Meh - 1.5 stars"></label>
+                                        <input type="checkbox" id="star1" name="rating" value="1" disabled /><label
+                                            class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                        <input type="checkbox" id="starhalf" name="rating" value="half"
+                                            disabled /><label class="half" for="starhalf"
+                                            title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                    4.0
+                                </div>
+                                <div class="doc-address"><i class="fas fa-map-marker-alt"
+                                        style="margin-right: 7px"></i>ул.
+                                    Карла Маркса 74
                                 </div>
                             </div>
-                            <!-- Doc ID -->
-                            <button id="doc_id" class="doc-date-btn">
-                                <div class="bell-btn">
-                                    <i id="bell" class="far fa-bell"></i>
+                            <div class="doc-sub-info">
+                                <div class="doc-spec">
+                                    Специальность
+                                    <div class="spec-title">
+                                        Гастроэнтеролог
+                                    </div>
                                 </div>
-                                <div class="text-btn">
-                                    Записаться<br>на прием
-                                </div>
-                            </button>
+                                <!-- Doc ID -->
+                                <button id="doc_id" class="doc-date-btn">
+                                    <div class="bell-btn">
+                                        <i id="bell" class="far fa-bell"></i>
+                                    </div>
+                                    <div class="text-btn">
+                                        Записаться<br>на прием
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
