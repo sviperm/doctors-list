@@ -106,6 +106,15 @@ aside {
     display: flex;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.side-btn:hover {
+    background-color: var(--grey);
+}
+
+.side-btn.active:hover {
+    background-color: #d69107;
 }
 
 .active {
@@ -332,7 +341,7 @@ input::placeholder {
     font-weight: 600;
 }
 
-.doc-raiting {
+.doc-rating {
     display: flex;
     justify-content: center;
     align-items: center;
