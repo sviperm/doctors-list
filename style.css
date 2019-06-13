@@ -411,7 +411,7 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     width: calc(100% / 2);
 }
 
-.spec-title {
+.spec-name {
     margin-top: 5px;
     color: var(--grey);
     font-size: 1.25em;
