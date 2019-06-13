@@ -84,6 +84,7 @@ let data = {
             address: 'ул. Карла Маркса, 74',
             speciality: 'Акушер',
             isFavorite: true,
+            isDated: false,
         },
         {
             id: 2,
@@ -94,6 +95,7 @@ let data = {
             address: 'ул. Карла Маркса, 74',
             speciality: 'Проктолог',
             isFavorite: true,
+            isDated: false,
         },
         {
             id: 3,
@@ -104,6 +106,7 @@ let data = {
             address: 'ул. Карла Маркса, 74',
             speciality: 'Анастезиолог',
             isFavorite: false,
+            isDated: false,
         },
     ],
 };
@@ -190,8 +193,13 @@ function createDoctorCard(doctor) {
     const dateDoctor = createElement('button', 'doc-date-btn', '<div class="bell-btn"><i id="bell" class="far fa-bell"></i></div><div class="text-btn">Записаться<br>на прием</div>');
     dateDoctor.id = `date_doc_${doctor.id} `;
     dateDoctor.addEventListener('click', () => {
-        insertNotificationToModal(data.user.phone, doctor.name);
-        showModal();
+        if (!doctor.isDated) {
+            doctor.isDated = !doctor.isDated;
+            const bell = dateDoctor.querySelector('.far');
+            bell.className = 'fas fa-bell';
+            insertNotificationToModal(data.user.phone, doctor.name);
+            showModal();
+        }
     });
 
     doctorCard.appendChild(doctorInfo);
