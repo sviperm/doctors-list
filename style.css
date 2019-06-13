@@ -11,6 +11,8 @@
     --space-betwwen-sort-n-order: 2rem;
     --filter-btn-width: 60px;
     --profile-n-search-height: 35px;
+    --modal-max-width: 600px;
+    --modal-min-height: 200px;
     /* Colors */
     --orange: #f1a309;
     --almost-white: #F6F7F8;
@@ -478,10 +480,9 @@ https://codepen.io/jamesbarnett/pen/vlpkh
 .modal-message {
     display: flex;
     position: relative;
-    min-height: 200px;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: calc((100vh - 200px) / 2);
+    min-height: var(--modal-min-height);
+    max-width: var(--modal-max-width);
+    margin: calc((100vh - var(--modal-min-height)) / 2) auto 0 auto;
     padding: 20px 40px;
     background-color: white;
     flex-direction: column;
@@ -677,6 +678,12 @@ https://codepen.io/jamesbarnett/pen/vlpkh
         font-size: .8em;
     }
 
+}
+
+@media screen and (max-width: 640px) { /* calc(var(--modal-max-width) + 40px) */
+    .modal-message {
+        margin: calc((100vh - var(--modal-min-height)) / 2) 20px 0 20px;
+    }
 }
 
 /* Fav button animation by Robeen
