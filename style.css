@@ -229,11 +229,11 @@ input::placeholder {
     flex-wrap: wrap;
 }
 
-.sort-by, .order-by {
+.filter-by, .order-by {
     display: flex;
 }
 
-.sort-by {
+.order-by {
     margin-right: var(--space-betwwen-sort-n-order);
 }
 
@@ -258,6 +258,27 @@ input::placeholder {
 
 .filter-btn:hover {
     cursor: pointer;
+}
+
+.filter-btn#toggle_order::after {
+    content: '\f160';
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+}
+
+.filter-btn.toggled#toggle_order::after {
+    content: '\f161';
+}
+
+.filter-btn#toggle_fav::after {
+    content: '\f004';
+    font-weight: 400;
+    font-family: "Font Awesome 5 Free";
+}
+
+.filter-btn.toggled#toggle_fav::after {
+    font-weight: 900;
+    color: var(--red-heart);
 }
 
 .custom-select {

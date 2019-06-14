@@ -94,21 +94,21 @@
                     </div>
                     <!-- Filter doctors -->
                     <div class="doctors-sort">
-                        <div class="sort-by">
-                            <button class="filter-btn" name="toogle-sort"><i
-                                    class="fas fa-sort-amount-down"></i></button>
-                            <select class="custom-select" name="sort" id="sort_by">
-                                <option value="1">А - Я</option>
-                                <option value="2">Рейтинг</option>
-                                <option value="3">Расстояние</option>
+                        <div class="order-by">
+                            <button id="toggle_order" class="filter-btn">
+                            </button>
+                            <select class="custom-select" name="order" id="order_by">
+                                <option value="name">А - Я</option>
+                                <option value="rating">Рейтинг</option>
                             </select>
                         </div>
-                        <div class="order-by">
-                            <button class="filter-btn" name="toogle-fav"><i class="far fa-star"></i></button>
-                            <select class="custom-select" name="order" id="order_by">
-                                <option value="1">Все</option>
-                                <option value="2">Мужчины</option>
-                                <option value="3">Женщины</option>
+                        <div class="filter-by">
+                            <button id="toggle_fav" class="filter-btn">
+                            </button>
+                            <select class="custom-select" name="filter" id="filter_by">
+                                <option value="all">Все</option>
+                                <option value="gender" data-filter="m">Мужчины</option>
+                                <option value="gender" data-filter="f">Женщины</option>
                             </select>
                         </div>
                     </div>
