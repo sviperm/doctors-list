@@ -3,7 +3,6 @@
 // ##############################################
 
 // DOMs
-const uploadDoctorBtn = document.querySelector('#upload_doctors');
 const modalWindow = document.querySelector('.modal');
 const modalMessage = document.querySelector('.modal-message');
 
@@ -26,34 +25,15 @@ function closeModal() {
     modalWindow.classList.remove('fade');
 };
 
-function insertUploadBtnsToModal() {
-    let btn = document.createElement('button');
-    btn.classList.add('upload-btn', 'all-round-corners');
-    btn.id = 'upload_sample';
-    btn.innerHTML = 'Загрузить <kbd>sample.json</kbd>';
-    modalMessage.appendChild(btn);
-
-    btn = document.createElement('button');
-    btn.classList.add('upload-btn', 'all-round-corners');
-    btn.id = 'upload_from_pc';
-    btn.innerHTML = 'Загрузить с компьютера<input type="file" id="file_input" style="display: none" accept=".json">';
-    modalMessage.appendChild(btn);
-
-    btn.addEventListener('click', () => document.getElementById('file_input').click());
-}
-
 // Events
-uploadDoctorBtn.addEventListener('click', () => {
-    insertUploadBtnsToModal();
-    showModal();
-});
-
 modalWindow.addEventListener('transitionend', function (e) {
     if (e.target === modalWindow) {
         isModalClosed = !isModalClosed;
         if (isModalClosed) {
             modalWindow.classList.remove('show');
-            modalMessage.innerHTML = '';
+            while (modalMessage.firstChild) {
+                modalMessage.removeChild(modalMessage.firstChild);
+            }
         };
     };
 });
@@ -65,59 +45,77 @@ window.addEventListener('click', function (e) {
 });
 
 // ##############################################
-// ############ OBJECTS MANIPULATION ############
+// ############ STORAGE MANIPULATION ############
 // ##############################################
 
-// Object
-let data = {
-    user: {
-        name: 'Сафоничев Владислав',
-        phone: '+79991234567',
-    },
-    doctors: [
-        {
-            id: 1,
-            name: 'Сафоничев Владислав Маркович',
-            avatar: 'img/doc-avatar-vlad.png',
-            gender: 'm',
-            rating: 4.5,
-            address: 'ул. Карла Маркса, 74',
-            speciality: 'Акушер',
-            isFavorite: true,
-            isDated: false,
-        },
-        {
-            id: 2,
-            name: 'Тутаров Артур Вячеславович',
-            avatar: 'img/doc-avatar-artur.png',
-            gender: 'm',
-            rating: 4,
-            address: 'ул. Карла Маркса, 74',
-            speciality: 'Проктолог',
-            isFavorite: true,
-            isDated: false,
-        },
-        {
-            id: 3,
-            name: 'Шамсутдинова Яна Маратовна',
-            avatar: 'img/doc-avatar-yana.png',
-            gender: 'f',
-            rating: 3,
-            address: 'ул. Карла Маркса, 74',
-            speciality: 'Анастезиолог',
-            isFavorite: false,
-            isDated: false,
-        },
-    ],
-};
+let storage = JSON.parse(localStorage.getItem('data'));
+
+function updateStorageData() {
+    localStorage.setItem('data', JSON.stringify(storage));
+}
+
+function clearStorage() {
+    storage = null;
+    localStorage.clear();
+}
+
+function visualizeStorageData() {
+    if (storage) {
+        const userName = document.querySelector('.profile-area');
+        userName.textContent = storage.user.name;
+
+        for (let i = 0; i < storage.doctors.length; i++) {
+            const docCard = createDoctorCard(storage.user, storage.doctors[i]);
+            doctorsGrid.appendChild(docCard);
+        }
+    }
+}
+
+// ##############################################
+// ############ DOCTORS MANIPULATION ############
+// ##############################################
 
 // DOMs
 const doctorsGrid = document.querySelector('.doctors-grid');
+const uploadDoctorBtn = document.querySelector('#upload_doctors');
 const uploadSampleBtn = document.querySelector('#upload_sample');
 const uploadFromPCBtn = document.querySelector('#upload_from_pc');
+const clearDoctorsBtn = document.querySelector('#clear_doctors');
 
 // Functions
-function createDoctorCard(doctor) {
+function insertUploadBtnsToModal() {
+    let btn = document.createElement('button');
+    btn.classList.add('upload-btn', 'all-round-corners');
+    btn.id = 'upload_sample';
+    btn.innerHTML = 'Загрузить <kbd>sample.json</kbd>';
+    modalMessage.appendChild(btn);
+    btn.addEventListener('click', () => alert('sample.json'));
+
+    btn = document.createElement('button');
+    btn.classList.add('upload-btn', 'all-round-corners');
+    btn.id = 'upload_from_pc';
+    btn.innerHTML = 'Загрузить с компьютера<input type="file" id="file_input" style="display: none" accept=".json">';
+    modalMessage.appendChild(btn);
+
+    function loadData(event) {
+        // https://stackoverflow.com/questions/23344776/access-data-of-uploaded-json-file-using-javascript
+        var reader = new FileReader();
+        reader.onload = (event) => {
+            storage = JSON.parse(event.target.result);
+            clearDoctorsList();
+            updateStorageData();
+            visualizeStorageData();
+        }
+        reader.readAsText(event.target.files[0]);
+        closeModal();
+    }
+
+
+    btn.addEventListener('click', () => document.getElementById('file_input').click());
+    document.getElementById('file_input').addEventListener('change', loadData);
+}
+
+function createDoctorCard(user, doctor) {
 
     function createElement(elementType, cssClass, inner) {
         const element = document.createElement(elementType);
@@ -147,9 +145,9 @@ function createDoctorCard(doctor) {
         return fieldset;
     };
 
-    function insertNotificationToModal(phone, doctor) {
+    function insertNotificationToModal(phone, doctorName) {
         let text = document.createElement('div');
-        text.innerHTML = `Мы вам перезвоним на номер ${phone}, чтобы согласовать запись к врачу ${doctor}`;
+        text.innerHTML = `Мы вам перезвоним на номер ${phone}, чтобы согласовать запись к врачу ${doctorName}`;
         modalMessage.appendChild(text);
     }
 
@@ -158,16 +156,15 @@ function createDoctorCard(doctor) {
     const doctorFavBtn = createElement('div', 'fav-doc-btn');
 
     const favCheckbox = document.createElement('input');
-    if (doctor.isFavorite) {
-        favCheckbox.classList.add('fav-btn-load');
-    } else {
+    doctor.isFavorite ?
+        favCheckbox.classList.add('fav-btn-load') :
         favCheckbox.classList.add('fav-btn');
-    }
     favCheckbox.type = 'checkbox';
     favCheckbox.id = `doc_id_${doctor.id}`;
     if (doctor.isFavorite) favCheckbox.setAttribute('checked', '');
     favCheckbox.addEventListener('click', function () {
         doctor.isFavorite = !doctor.isFavorite;
+        updateStorageData();
         favCheckbox.classList.remove('fav-btn-load');
         favCheckbox.classList.add('fav-btn');
     })
@@ -190,14 +187,15 @@ function createDoctorCard(doctor) {
 
     const doctorSpec = createElement('div', 'doc-spec', `Специальность<div class="spec-name">${doctor.speciality}</div></div>`);
 
-    const dateDoctor = createElement('button', 'doc-date-btn', '<div class="bell-btn"><i id="bell" class="far fa-bell"></i></div><div class="text-btn">Записаться<br>на прием</div>');
+    const dateDoctor = createElement('button', 'doc-date-btn', `<div class="bell-btn"><i id="bell" class="${doctor.isDated ? 'fas' : 'far'} fa-bell"></i></div><div class="text-btn">Записаться<br>на прием</div>`);
     dateDoctor.id = `date_doc_${doctor.id} `;
     dateDoctor.addEventListener('click', () => {
         if (!doctor.isDated) {
             doctor.isDated = !doctor.isDated;
+            updateStorageData();
             const bell = dateDoctor.querySelector('.far');
             bell.className = 'fas fa-bell';
-            insertNotificationToModal(data.user.phone, doctor.name);
+            insertNotificationToModal(user.phone, doctor.name);
             showModal();
         }
     });
@@ -217,11 +215,38 @@ function createDoctorCard(doctor) {
     return doctorCard
 }
 
-// Events
-
-for (let i = 0; i < data.doctors.length; i++) {
-    doctorsGrid.appendChild(createDoctorCard(data.doctors[i]))
+function clearDoctorsList() {
+    while (doctorsGrid.firstChild) {
+        doctorsGrid.removeChild(doctorsGrid.firstChild);
+    }
 }
 
-// TODO: Change bell on click
-// TODO: Add object manipulation
+// Events
+uploadDoctorBtn.addEventListener('click', () => {
+    insertUploadBtnsToModal();
+    showModal();
+});
+
+clearDoctorsBtn.addEventListener('click', () => {
+    clearStorage();
+    clearDoctorsList();
+});
+
+visualizeStorageData();
+
+// ### Tried upload local file without file input window ###
+// ###        Not working at all. Security issue.        ###
+// 
+// function loadJSON(file, callback) {
+//     var xobj = new XMLHttpRequest();
+//     xobj.overrideMimeType("application/json");
+//     xobj.open('GET', file, true);
+//     xobj.onreadystatechange = function () {
+//         if (xobj.readyState == 4 && xobj.status == "200") {
+//             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+//             callback(xobj.responseText);
+//         }
+//     };
+//     xobj.send();
+//     return xobj;
+// }
