@@ -48,25 +48,40 @@ window.addEventListener('click', function (e) {
 // ############ STORAGE MANIPULATION ############
 // ##############################################
 
-let storage = JSON.parse(localStorage.getItem('data'));
+function getStorageData() {
+    let data = localStorage.getItem('data')
+    if (data !== undefined) {
+        return JSON.parse(data);
+    };
+    return null;
+};
 
-function updateStorageData() {
-    localStorage.setItem('data', JSON.stringify(storage));
-}
+function updateStorageData(data) {
+    localStorage.setItem('data', JSON.stringify(data));
+};
 
 function clearStorage() {
-    storage = null;
     localStorage.clear();
-}
+};
 
 function visualizeStorageData() {
-    if (storage) {
-        const userName = document.querySelector('.profile-area');
-        userName.textContent = storage.user.name;
+    const data = getStorageData();
+    if (data) {
+        document.querySelector('.profile-area').textContent = data.user.name;
+        showDoctorsList();
+    } else {
+        insertUploadBtnsToModal();
+        showModal();
+    };
+};
 
-        for (let i = 0; i < storage.doctors.length; i++) {
-            const docCard = createDoctorCard(storage.user, storage.doctors[i]);
-            doctorsGrid.appendChild(docCard);
+function updateDoctorDataInStorage(id, attr, newVal) {
+    let data = getStorageData();
+    for (let i = 0; i < data.doctors.length; i++) {
+        if (data.doctors[i].id === id) {
+            data.doctors[i][attr] = newVal;
+            updateStorageData(data);
+            break;
         }
     }
 }
@@ -81,6 +96,14 @@ const uploadDoctorBtn = document.querySelector('#upload_doctors');
 const uploadSampleBtn = document.querySelector('#upload_sample');
 const uploadFromPCBtn = document.querySelector('#upload_from_pc');
 const clearDoctorsBtn = document.querySelector('#clear_doctors');
+const toggleSort = document.getElementById('toggle_order');
+const toggleFavorite = document.getElementById('toggle_fav');
+const orderSelection = document.getElementById('order_by');
+const filterSelection = document.getElementById('filter_by');
+
+// Variables
+let reversed = false;
+let favorites = false;
 
 // Functions
 function insertUploadBtnsToModal() {
@@ -89,7 +112,21 @@ function insertUploadBtnsToModal() {
     btn.id = 'upload_sample';
     btn.innerHTML = 'Загрузить <kbd>sample.json</kbd>';
     modalMessage.appendChild(btn);
-    btn.addEventListener('click', () => alert('sample.json'));
+    btn.addEventListener('click', () => alert('Tried upload local file without file input window.\nNot working at all. Security issue.'));
+    // 
+    // function loadJSON(file, callback) {
+    //     var xobj = new XMLHttpRequest();
+    //     xobj.overrideMimeType("application/json");
+    //     xobj.open('GET', file, true);
+    //     xobj.onreadystatechange = function () {
+    //         if (xobj.readyState == 4 && xobj.status == "200") {
+    //             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+    //             callback(xobj.responseText);
+    //         }
+    //     };
+    //     xobj.send();
+    //     return xobj;
+    // }
 
     btn = document.createElement('button');
     btn.classList.add('upload-btn', 'all-round-corners');
@@ -101,9 +138,9 @@ function insertUploadBtnsToModal() {
         // https://stackoverflow.com/questions/23344776/access-data-of-uploaded-json-file-using-javascript
         var reader = new FileReader();
         reader.onload = (event) => {
-            storage = JSON.parse(event.target.result);
+            const data = JSON.parse(event.target.result);
             clearDoctorsList();
-            updateStorageData();
+            updateStorageData(data);
             visualizeStorageData();
         }
         reader.readAsText(event.target.files[0]);
@@ -164,7 +201,7 @@ function createDoctorCard(user, doctor) {
     if (doctor.isFavorite) favCheckbox.setAttribute('checked', '');
     favCheckbox.addEventListener('click', function () {
         doctor.isFavorite = !doctor.isFavorite;
-        updateStorageData();
+        updateDoctorDataInStorage(doctor.id, 'isFavorite', doctor.isFavorite);
         favCheckbox.classList.remove('fav-btn-load');
         favCheckbox.classList.add('fav-btn');
     })
@@ -192,7 +229,7 @@ function createDoctorCard(user, doctor) {
     dateDoctor.addEventListener('click', () => {
         if (!doctor.isDated) {
             doctor.isDated = !doctor.isDated;
-            updateStorageData();
+            updateDoctorDataInStorage(doctor.id, 'isDated', doctor.isDated);
             const bell = dateDoctor.querySelector('.far');
             bell.className = 'fas fa-bell';
             insertNotificationToModal(user.phone, doctor.name);
@@ -213,7 +250,46 @@ function createDoctorCard(user, doctor) {
     doctorSubInfo.appendChild(dateDoctor);
 
     return doctorCard
-}
+};
+
+function showDoctorsList() {
+    let data = getStorageData();
+
+    function filter() {
+        if (favorites) {
+            data.doctors = data.doctors.filter(doctor => (doctor.isFavorite));
+        }
+        const selection = filterSelection.options[filterSelection.selectedIndex];
+        if (selection.value !== 'all') {
+            data.doctors = data.doctors.filter(doctor => (doctor[selection.value] === selection.dataset.filter));
+        }
+    };
+
+    function order() {
+        const selection = orderSelection.options[orderSelection.selectedIndex].value;
+        if (selection === 'name') {
+            data.doctors = data.doctors.sort((a, b) => a[selection] > b[selection] ? 1 : -1);
+        } else {
+            data.doctors = data.doctors.sort((a, b) => a[selection] < b[selection] ? 1 : -1);
+        }
+        if (reversed) {
+            data.doctors.reverse();
+        }
+    };
+
+    filter();
+    order();
+
+    for (let i = 0; i < data.doctors.length; i++) {
+        const docCard = createDoctorCard(data.user, data.doctors[i]);
+        doctorsGrid.appendChild(docCard);
+    };
+};
+
+function updateDoctorsList() {
+    clearDoctorsList();
+    showDoctorsList();
+};
 
 function clearDoctorsList() {
     while (doctorsGrid.firstChild) {
@@ -230,23 +306,26 @@ uploadDoctorBtn.addEventListener('click', () => {
 clearDoctorsBtn.addEventListener('click', () => {
     clearStorage();
     clearDoctorsList();
+    insertUploadBtnsToModal();
+    showModal();
+});
+
+toggleSort.addEventListener('click', () => {
+    reversed = !reversed;
+    toggleSort.classList.toggle('toggled');
+    updateDoctorsList();
+});
+
+toggleFavorite.addEventListener('click', () => {
+    favorites = !favorites;
+    toggleFavorite.classList.toggle('toggled');
+    updateDoctorsList();
+});
+
+[orderSelection, filterSelection].forEach(selection => {
+    selection.addEventListener('change', () => {
+        updateDoctorsList();
+    });
 });
 
 visualizeStorageData();
-
-// ### Tried upload local file without file input window ###
-// ###        Not working at all. Security issue.        ###
-// 
-// function loadJSON(file, callback) {
-//     var xobj = new XMLHttpRequest();
-//     xobj.overrideMimeType("application/json");
-//     xobj.open('GET', file, true);
-//     xobj.onreadystatechange = function () {
-//         if (xobj.readyState == 4 && xobj.status == "200") {
-//             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-//             callback(xobj.responseText);
-//         }
-//     };
-//     xobj.send();
-//     return xobj;
-// }
