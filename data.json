@@ -1,0 +1,41 @@
+{
+    "user": {
+        "name": "Дмитрий Жиганов",
+        "phone": "+79991234567"
+    },
+    "doctors": [
+        {
+            "id": 1,
+            "name": "Сафоничев Владислав Маркович",
+            "avatar": "img/doc-avatar-vlad.png",
+            "gender": "m",
+            "rating": 4.5,
+            "address": "ул. Карла Маркса, 74",
+            "speciality": "Акушер-гениколог",
+            "isFavorite": true,
+            "isDated": false
+        },
+        {
+            "id": 2,
+            "name": "Тутаров Артур Вячеславович",
+            "avatar": "img/doc-avatar-artur.png",
+            "gender": "m",
+            "rating": 5,
+            "address": "ул. Карла Маркса, 74",
+            "speciality": "Проктолог",
+            "isFavorite": true,
+            "isDated": false
+        },
+        {
+            "id": 3,
+            "name": "Шамсутдинова Яна Маратовна",
+            "avatar": "img/doc-avatar-yana.png",
+            "gender": "f",
+            "rating": 3,
+            "address": "ул. Карла Маркса, 74",
+            "speciality": "Анастезиолог",
+            "isFavorite": false,
+            "isDated": false
+        }
+    ]
+}
