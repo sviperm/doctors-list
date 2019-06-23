@@ -212,12 +212,12 @@ input::placeholder {
     flex-wrap: wrap;
 }
 
-.doctors-title {
+.title {
     font-size: 1.45em;
     font-weight: 600;
 }
 
-.doctors-subtitle{
+.subtitle{
     margin-top: 7px;
     color: var(--grey);
 }
@@ -313,11 +313,8 @@ input::placeholder {
     background-color: var(--almost-white);
 }
 
-.doctors-list {
+.doctors-board {
     margin-top: 25px;
-}
-
-.doctors-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 2rem;
@@ -595,7 +592,7 @@ https://codepen.io/jamesbarnett/pen/vlpkh
         height: calc(100% - var(--header-mobile-height));
     }
 
-    .doctors-list {
+    .doctors-board {
         margin-top: 10px;
     }
 
@@ -603,7 +600,7 @@ https://codepen.io/jamesbarnett/pen/vlpkh
         flex-direction: column;
     }
     
-    .doctors-title-cont {
+    .doctors-title {
         text-align: center;
     }
     

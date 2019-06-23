@@ -50,10 +50,10 @@ window.addEventListener('click', function (e) {
 
 function getStorageData() {
     let data = localStorage.getItem('data')
-    if (data !== undefined) {
+    // if (data && data !== 'undefined') {
+    if (data) {
         return JSON.parse(data);
     };
-    return null;
 };
 
 function updateStorageData(data) {
@@ -77,11 +77,13 @@ function visualizeStorageData() {
 
 function updateDoctorDataInStorage(id, attr, newVal) {
     let data = getStorageData();
-    for (let i = 0; i < data.doctors.length; i++) {
-        if (data.doctors[i].id === id) {
-            data.doctors[i][attr] = newVal;
-            updateStorageData(data);
-            break;
+    if (data) {
+        for (let i = 0; i < data.doctors.length; i++) {
+            if (data.doctors[i].id === id) {
+                data.doctors[i][attr] = newVal;
+                updateStorageData(data);
+                break;
+            }
         }
     }
 }
@@ -91,7 +93,7 @@ function updateDoctorDataInStorage(id, attr, newVal) {
 // ##############################################
 
 // DOMs
-const doctorsGrid = document.querySelector('.doctors-grid');
+const doctorsBoard = document.querySelector('.doctors-board');
 const uploadDoctorBtn = document.querySelector('#upload_doctors');
 const uploadSampleBtn = document.querySelector('#upload_sample');
 const uploadFromPCBtn = document.querySelector('#upload_from_pc');
@@ -102,54 +104,53 @@ const orderSelection = document.getElementById('order_by');
 const filterSelection = document.getElementById('filter_by');
 
 // Variables
-let reversed = false;
-let favorites = false;
+let isReversed = false;
+let isFavorites = false;
 
 // Functions
+
+// Upload Doctors
 function insertUploadBtnsToModal() {
+    // First button
     let btn = document.createElement('button');
     btn.classList.add('upload-btn', 'all-round-corners');
     btn.id = 'upload_sample';
     btn.innerHTML = 'Загрузить <kbd>sample.json</kbd>';
     modalMessage.appendChild(btn);
-    btn.addEventListener('click', () => alert('Tried upload local file without file input window.\nNot working at all. Security issue.'));
-    // 
-    // function loadJSON(file, callback) {
-    //     var xobj = new XMLHttpRequest();
-    //     xobj.overrideMimeType("application/json");
-    //     xobj.open('GET', file, true);
-    //     xobj.onreadystatechange = function () {
-    //         if (xobj.readyState == 4 && xobj.status == "200") {
-    //             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-    //             callback(xobj.responseText);
-    //         }
-    //     };
-    //     xobj.send();
-    //     return xobj;
-    // }
+    // Download .json file from GitHub
+    btn.addEventListener('click', () => {
+        let xobj = new XMLHttpRequest();
+        xobj.open('GET', 'https://raw.githubusercontent.com/sviperm/doctors-list/master/data.json', true);
+        xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                clearDoctorsList();
+                updateStorageData(JSON.parse(xobj.responseText));
+                visualizeStorageData();
+            }
+        }
+        xobj.send();
+        closeModal();
+    });
 
+    // Second Button
     btn = document.createElement('button');
     btn.classList.add('upload-btn', 'all-round-corners');
     btn.id = 'upload_from_pc';
     btn.innerHTML = 'Загрузить с компьютера<input type="file" id="file_input" style="display: none" accept=".json">';
     modalMessage.appendChild(btn);
-
-    function loadData(event) {
+    btn.addEventListener('click', () => document.getElementById('file_input').click());
+    // Download file from desktop
+    document.getElementById('file_input').addEventListener('change', event => {
         // https://stackoverflow.com/questions/23344776/access-data-of-uploaded-json-file-using-javascript
-        var reader = new FileReader();
+        let reader = new FileReader();
+        reader.readAsText(event.target.files[0]);
         reader.onload = (event) => {
-            const data = JSON.parse(event.target.result);
             clearDoctorsList();
-            updateStorageData(data);
+            updateStorageData(JSON.parse(event.target.result));
             visualizeStorageData();
         }
-        reader.readAsText(event.target.files[0]);
         closeModal();
-    }
-
-
-    btn.addEventListener('click', () => document.getElementById('file_input').click());
-    document.getElementById('file_input').addEventListener('change', loadData);
+    });
 }
 
 function createDoctorCard(user, doctor) {
@@ -255,35 +256,34 @@ function createDoctorCard(user, doctor) {
 function showDoctorsList() {
     let data = getStorageData();
 
-    function filter() {
-        if (favorites) {
+    // Filter
+    (function () {
+        if (isFavorites) {
             data.doctors = data.doctors.filter(doctor => (doctor.isFavorite));
         }
         const selection = filterSelection.options[filterSelection.selectedIndex];
         if (selection.value !== 'all') {
             data.doctors = data.doctors.filter(doctor => (doctor[selection.value] === selection.dataset.filter));
         }
-    };
+    })();
 
-    function order() {
+    // Order
+    (function () {
         const selection = orderSelection.options[orderSelection.selectedIndex].value;
         if (selection === 'name') {
             data.doctors = data.doctors.sort((a, b) => a[selection] > b[selection] ? 1 : -1);
         } else {
             data.doctors = data.doctors.sort((a, b) => a[selection] < b[selection] ? 1 : -1);
         }
-        if (reversed) {
+        if (isReversed) {
             data.doctors.reverse();
         }
-    };
+    })();
 
-    filter();
-    order();
-
-    for (let i = 0; i < data.doctors.length; i++) {
-        const docCard = createDoctorCard(data.user, data.doctors[i]);
-        doctorsGrid.appendChild(docCard);
-    };
+    data.doctors.forEach(doctor => {
+        const docCard = createDoctorCard(data.user, doctor);
+        doctorsBoard.appendChild(docCard);
+    });
 };
 
 function updateDoctorsList() {
@@ -292,8 +292,8 @@ function updateDoctorsList() {
 };
 
 function clearDoctorsList() {
-    while (doctorsGrid.firstChild) {
-        doctorsGrid.removeChild(doctorsGrid.firstChild);
+    while (doctorsBoard.firstChild) {
+        doctorsBoard.removeChild(doctorsBoard.firstChild);
     }
 }
 
@@ -311,13 +311,13 @@ clearDoctorsBtn.addEventListener('click', () => {
 });
 
 toggleSort.addEventListener('click', () => {
-    reversed = !reversed;
+    isReversed = !isReversed;
     toggleSort.classList.toggle('toggled');
     updateDoctorsList();
 });
 
 toggleFavorite.addEventListener('click', () => {
-    favorites = !favorites;
+    isFavorites = !isFavorites;
     toggleFavorite.classList.toggle('toggled');
     updateDoctorsList();
 });
