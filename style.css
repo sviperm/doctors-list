@@ -626,8 +626,10 @@ https://codepen.io/jamesbarnett/pen/vlpkh
     aside {
         height: var(--aside-height);
         width: 100vw;
-        /* bottom: 0; */
-        bottom: env(safe-area-inset-bottom);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* bottom: env(safe-area-inset-bottom); */
         user-select: none;
     }
 
