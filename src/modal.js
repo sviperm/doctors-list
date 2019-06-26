@@ -1,16 +1,16 @@
-import clearDoctorsList from './doctors';
+import { clearDoctorsList } from './doctors';
 import { updateData, visualizeData } from './storage';
 
 // DOMs
 const modalWindow = document.querySelector('.modal');
-const modalMessage = document.querySelector('.modal-message');
+export const modalMessage = document.querySelector('.modal-message');
 const uploadDoctorBtn = document.querySelector('#upload_doctors');
 
 // Variables
 let isModalClosed = true;
 
 // Functions
-function show() {
+export function show() {
     modalWindow.classList.add('show');
     // Super important, we need to delay to add 'fade' class
     setTimeout(() => { modalWindow.classList.add('fade') }, (10));
@@ -21,11 +21,11 @@ function show() {
     modalMessage.appendChild(closeBtn);
 };
 
-function close() {
+export function close() {
     modalWindow.classList.remove('fade');
 };
 
-function insertUploadButtons() {
+export function insertUploadButtons() {
     // First button
     let btn = document.createElement('button');
     btn.classList.add('upload-btn', 'all-round-corners');
@@ -36,7 +36,7 @@ function insertUploadButtons() {
     btn.addEventListener('click', () => {
         let xobj = new XMLHttpRequest();
         xobj.open('GET', 'https://raw.githubusercontent.com/sviperm/doctors-list/master/data.json', true);
-        xobj.onreadystatechange = function () {
+        xobj.onreadystatechange = () => {
             if (xobj.readyState == 4 && xobj.status == "200") {
                 clearDoctorsList();
                 updateData(JSON.parse(xobj.responseText));
@@ -69,7 +69,7 @@ function insertUploadButtons() {
 }
 
 // Events
-modalWindow.addEventListener('transitionend', function (e) {
+modalWindow.addEventListener('transitionend', (e) => {
     if (e.target === modalWindow) {
         isModalClosed = !isModalClosed;
         if (isModalClosed) {
@@ -81,13 +81,13 @@ modalWindow.addEventListener('transitionend', function (e) {
     };
 });
 
-window.addEventListener('click', function (e) {
+window.addEventListener('click', (e) => {
     if ((!isModalClosed) && (e.target !== modalMessage) && (!modalMessage.contains(e.target))) {
         close();
     };
 });
 
 uploadDoctorBtn.addEventListener('click', () => {
-    insertUploadBtnsToModal();
+    insertUploadButtons();
     show();
 });
